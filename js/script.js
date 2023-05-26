@@ -1,9 +1,26 @@
 var canvas = document.getElementById('myCanvas');
 var ctx = canvas.getContext('2d');
 
+var scale = window.devicePixelRatio || 1;
+var desiredWidth = window.innerWidth; // 또는 원하는 너비 값
+var desiredHeight = window.innerHeight; // 또는 원하는 높이 값
+
+// 캔버스의 CSS 크기 조정
+canvas.style.width = desiredWidth + "px";
+canvas.style.height = desiredHeight + "px";
+
+// 캔버스의 실제 픽셀 크기 조정
+canvas.width = desiredWidth * scale;
+canvas.height = desiredHeight * scale;
+
+// 캔버스 컨텍스트에 스케일 적용
+ctx.scale(scale, scale);
+
+document.body.appendChild(canvas);
+
 // 캔버스 크기 설정
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+
+ctx.imageSmoothingEnabled = true;
 
 // 문장들 배열
 var sentences = [
@@ -31,7 +48,7 @@ var sentences = [
 
 // 원들 생성
 var circles = [];
-var numCircles = 20;
+var numCircles = 30;
 var maxCircleSize = 300;
 var minCircleSize = 250;
 var circleSpacing = 100;
@@ -61,7 +78,6 @@ for (var i = 0; i < numCircles; i++) {
   circles.push(circle);
 }
 
-// 캔버스 그리기
 // 캔버스 그리기
 function drawCanvas() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -127,10 +143,10 @@ function updateCanvas() {
     circle.y += circle.movementY;
 
     // 벽과 충돌 시 반대 방향으로 움직임
-    if (circle.x <= 0 || circle.x >= canvas.width - circle.size) {
+    if (circle.x <= 0 || circle.x >= canvas.width/scale - circle.size) {
       circle.movementX *= -1;
     }
-    if (circle.y <= 0 || circle.y >= canvas.height - circle.size) {
+    if (circle.y <= 0 || circle.y >= canvas.height/scale - circle.size) {
       circle.movementY *= -1;
     }
   }
@@ -259,7 +275,7 @@ function animate() {
     var circle = circles[i];
 
     if (!circle.isHovered) {
-      circle.rotation += Math.random() * 1;
+      circle.rotation += 1; // 회전 각도를 1씩 증가시켜 한 바퀴 돌게 함
     } else {
       circle.rotation = 0; // hover된 원의 회전 각도를 0으로 설정
     }
@@ -270,38 +286,3 @@ function animate() {
 
 // 애니메이션 시작
 animate();
-
-
-//마우스 커서 (canvas 위에서만)
-
-// // 마우스 이벤트 처리
-// canvas.addEventListener("mousemove", function(event) {
-//   var rect = canvas.getBoundingClientRect();
-//   var mouseX = event.clientX - rect.left;
-//   var mouseY = event.clientY - rect.top;
-  
-//   // 커서 스타일 설정
-//   var cursorStyle = "auto"; // 기본 커서 스타일
-  
-//   // 원들에 hover할 때
-//   for (var i = 0; i < circles.length; i++) {
-//     var circle = circles[i];
-//     var circleCenterX = circle.x + circle.size / 2;
-//     var circleCenterY = circle.y + circle.size / 2;
-
-//     var distance = Math.sqrt(Math.pow(mouseX - circleCenterX, 2) + Math.pow(mouseY - circleCenterY, 2));
-
-//     if (distance <= circle.size / 2) {
-//       cursorStyle = "url('../img/cursor-bl.png'), auto";
-//       break;
-//     }
-//   }
-  
-//   // 캔버스에 hover할 때
-//   if (mouseX >= 0 && mouseX <= canvas.width && mouseY >= 0 && mouseY <= canvas.height) {
-//     cursorStyle = "url('../img/cursor-bl.png'), auto";
-//   }
-  
-//   // 커서 스타일 적용
-//   canvas.style.cursor = cursorStyle;
-// });

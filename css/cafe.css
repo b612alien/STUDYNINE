@@ -43,6 +43,7 @@ h2,h3{
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 400;
     word-break: keep-all;
+    font-size: 20px;
 }
 
 .clearfix::after {
