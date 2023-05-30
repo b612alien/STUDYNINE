@@ -105,7 +105,7 @@ h2,h3,h4{
 }
 
 .nav .gnb li a{
-    padding: 10px 25px;
+    padding: 9.5px 25.5px;
     font-size: 18px;
     font-weight: 500;
 }
@@ -230,7 +230,7 @@ section #num{
 }
 
 .croquis .exp .img-box::-webkit-scrollbar {
-    height: 7px;
+    height: 12px;
 }
   
 .croquis .exp .img-box::-webkit-scrollbar-thumb {
@@ -291,7 +291,7 @@ section #num{
 }
 
 .inten .img-box::-webkit-scrollbar {
-    height: 7px;
+    height: 12px;
 }
   
 .inten .img-box::-webkit-scrollbar-thumb {
@@ -310,9 +310,6 @@ section #num{
 
 .weekly-event .wrapper{
     width: 250px;
-    display: flex; 
-    justify-content: left; 
-    align-items: center;
     flex-shrink: 0;
 }
 
