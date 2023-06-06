@@ -1,18 +1,41 @@
 @font-face {
-    font-family: 'Acosta Regular';
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
     font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bodoni 72';
+    src: url('BodoniSvtyTwoITCTT-BookIta.woff2') format('woff2'),
+        url('BodoniSvtyTwoITCTT-BookIta.woff') format('woff');
     font-weight: normal;
-    src: local('Acosta Regular'), url('../fonts/Acosta.woff') format('woff');
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Bodoni 72';
+    src: url('BodoniSvtyTwoITCTT-Book.woff2') format('woff2'),
+        url('BodoniSvtyTwoITCTT-Book.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Bodoni 72';
+    src: url('BodoniSvtyTwoITCTT-Bold.woff2') format('woff2'),
+        url('BodoniSvtyTwoITCTT-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
 }
 
 * {
     margin: 0;
     padding: 0;
-    color: #fff;
-    font-family: 'Noto Sans KR', sans-serif;
-}
-head, body{
-    cursor: url('../img/cursor-bl.png'), auto;
+    font-family: 'Pretendard-Regular';
 }
 
 ul {
@@ -30,200 +53,403 @@ img {
 }
 
 body{
-    background-color: #000;
     margin: 0;
-    overflow: hidden;
+    background-color: #000;
 }
 
-canvas {
-    display: block;
-}
-
-/* #myCanvas{
-    cursor: none;
-} */
+/* fonts */
 
 h1{
-    font-family:'Acosta Regular';
-    font-weight:normal;
+    font-family: 'Bodoni 72';
+    font-weight: normal;
 }
 
-h2,h3{
-    font-family: 'Noto Sans KR', sans-serif;
-    font-weight: 400;
+h2{
+    font-family: 'Montserrat';
+    font-weight: normal;
 }
 
-.clearfix::after {
-    content: "";
-    display: table;
-    clear: both;
+p{
+    font-family: 'Pretendard-Regular';
+    font-weight: normal;
 }
 
-.wrap {
-    margin: 0 0;
-    margin-right: 60px;
-    padding: 50px;
+/* lines */
+
+.line-bl {
+    height: 0.25px;
+    background-color: #000;
+    width: 100%;
+    /* margin-bottom: 10px;
+    margin-top: 10px; */
+}
+
+.line-wh {
+    height: 0.25px;
+    background-color: #fff;
+    width: 100%;
+    /* margin-bottom: 10px;
+    margin-top: 10px; */
+}
+
+/* bg video */
+
+.bg-video {
+    position: relative;
+    width: 100%;
+}
+  
+.bg-video video {
+    width: 100%;
     height: auto;
-    width: 700px;
-    z-index: 5;
-
-    position: fixed;
-    top: 50px;
 }
-
-.bg-img .trapezoid{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 37vw;
-    border-bottom: 1000px solid #F5601B;
-    border-left: 0 solid transparent;
-    border-right: 500px solid transparent;
-    transform: scaleY(-1);
-    pointer-events: none; /* 추가 */
-}
-
-.trapezoid:before {
-    content: "";
-    position: fixed;
+  
+.overlay {
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
+    background-color: rgba(0, 0, 0, 0.5);
 }
+  
+   
 
-/* nav css */
+/* nav */
 
-.nav{
-    width: 100%;
-    height: 45px;
-    background-color: #000;
-    color: #fff;
+.header{
     position: fixed;
-    z-index: 10;
-    left: 0;
     top: 0;
+    padding-top: 20px;
+    width: 100%;
+    z-index: 10;
+    color: #fff;
+
 }
 
-.nav .wrapper-nav{
-    width: 450px;
+.header-txt{
+    width: 1200px;
+    text-align: center;
+    margin: auto;
+    position: relative;
 }
 
-.flex{
-    display: flex; 
-    justify-content: space-between;
+.header .header-txt .logo{
+
+}
+.header .header-txt .logo h1{
+    font-size: 30px;
+}
+.header .header-txt .nav{
+    position: relative;
+}
+.header .header-txt .nav .gnb{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header .header-txt .nav .gnb >li{
+    padding: 15px;
+}
+.header .header-txt .nav .gnb >li > a{
+    font-family: 'Montserrat';
+    font-weight: 400;
+    font-size: 14px;
 }
 
-.nav a{
+.header:hover .header-txt .nav .gnb >li > a:hover{
+    color: #696969;
+}
+
+.header .header-txt .nav .gnb .icons{
+    position: absolute;
+    right: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header .header-txt .nav .gnb .icons li{
+    padding: 10px;
+} 
+
+.header:hover .icons li:nth-child(1) a img {
+    content: url('../img/search_bl.svg');
+}
+  
+.header:hover .icons li:nth-child(2) a img {
+    content: url('../img/user_bl.svg');
+}
+  
+.header:hover .icons li:nth-child(3) a img {
+    content: url('../img/cart_bl.svg');
+}  
+
+.icons li img {
+    transition: opacity 0.3s ease-in-out;
+    opacity: 1;
+}
+  
+
+.header {
+    transition: background-color 0.2s ease-in, color 0.35s ease-out;
+}
+  
+.header:hover {
+    background-color: #fff;
+    color: #000;
+}
+  
+
+/* projects */
+
+.wrap{
+    position: relative;
+    width: 100%;
+    margin: auto;
+    color: #fff;
     display: block;
-	padding: 13px 15px;
 }
 
-.nav .logo{
-    margin-left: 50px;
+.arrow-con{
+    width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.nav .logo h1{
-    font-size:20px;
+.arrow {
+    position: relative;
+    top: 5rem;
+    cursor: pointer;
 }
 
-.nav .gnb{
-    width: 400px;
-    margin-right: 50px;
+.arrow::after {
+    position: absolute;
+    left: 0; 
+    top: 0; 
+    content: '';
+    width: 50px; /* 사이즈 */
+    height: 50px; /* 사이즈 */
+    border-top: 1px solid #5f5f5f; /* 선 두께 */
+    border-right: 1px solid #5f5f5f; /* 선 두께 */
+    transform: rotate(135deg); /* 각도 */
+    
 }
 
-.nav .gnb .on{
-    background: #F5601B;
-	color: #000;
+/* img sizes */
+#seoul-img{
+    width: 50vw;
+    object-fit: contain;
 }
 
-.nav .gnb li a{
-    padding: 9.5px 25.5px;
-    font-size: 18px;
-    font-weight: 500;
+#tokyo-img{
+    width: 50vw;
+    object-fit: contain;
 }
 
-.nav .gnb li a:hover{
-    background: #F5601B;
-	color: #000;
-	transition: all 0.5s;  
+#ny-img{
+    width: 70vw;
+    object-fit: contain;
 }
 
-/* main page css */
+#paris-img{
+    width: 50vw;
+    object-fit: contain;
+}
 
-.square-button {
-    width: 300px;
-    height: 50px;
+#dubai-img{
+    width: 60vw;
+    object-fit: contain;
+}
+
+#bali-img{
+    width: 70vw;
+    object-fit: contain;
+}
+
+/* projects */
+
+.projects{
+    position: relative;
+    top: 30rem;
+}
+.projects > li{
+    margin-top: 25rem;
+}
+.projects > li:not(#exclude){
+    padding-top: 10rem;
+    margin-top: 0rem;
+}
+
+.projects li img{
+    transition: transform 0.3s ease;
+}
+
+.projects li img:hover{
+    transform: scale(1.02);
+}
+
+.projects li .product-exp h2{
+    font-family: 'Montserrat';
+    font-weight: 400;
+    font-size: 25px;
+}
+.projects li .product-exp h3{
+    position: relative;
+    top: 10px;
+    font-family: 'Montserrat';
+    font-weight: 200;
+}
+
+.projects .buttons li{
+    margin-right: 15px;
+}
+.projects .product-exp .buttons .box-bl{
+    width: 100px;
+    height: 40px;
+    background-color: #000;
+    border: 1px solid #ffff;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.projects .product-exp .buttons .box-bl:hover{
+    color: #d8d8d8;
+    border: 1px solid #d8d8d8;
+}
+.projects .product-exp .buttons .box-wh{
+    width: 100px;
+    height: 40px;
     background-color: #fff;
     border: 1px solid #000;
     color: #000;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: circle;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.projects .product-exp .buttons .box-wh:hover{
+    color: #696969;
 }
 
-.square-button:hover{
-    background-color: #000;
-    border: 1px solid #fff;
-    color: #F5601B;
-    transition: all 0.3s;  
+/* horizontal col */
+
+.projects li .ho-col{
+    display: flex;
+    justify-content: left;
+    align-items: flex-start;
+    height: auto; 
+    width: 100%;
 }
 
-.tit{
+.projects li .ho-col .product-exp{
+    margin-left: 20px;
+}
+
+.projects li .ho-col .product-exp .buttons{
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    position: relative;
+    top: 5rem;
+}
+
+.projects li .ho-col .product-exp .buttons li a{}
+
+/* vertical col */
+
+.projects li .vr-col{
+    width: 100%;
+    /* height: 60rem; */
+    display: flex;
+    justify-content: right;
+}
+
+.projects li .vr-col .vr-col-ver{
+    flex-direction: column;
+}
+.projects li .vr-col .product-exp{
+    display: flex;
+    justify-content: space-between;
+    align-items: right;
+    position: relative;
+    top: 20px;
+}
+
+.projects li .vr-col .product-exp .bundle{
+}
+
+.projects li .vr-col .product-exp .buttons{
+    display: flex;
+    justify-content: left;
+    align-items: right;
     position: relative;
 }
-.tit .main{
-    font-size: 5.7vw;
+.projects li .vr-col .product-exp .buttons li a{}
+
+/* fade-in anim */
+
+.hideme
+{
+    opacity:0;
 }
-.tit #season{
+
+.for-footer{
+    height: 50rem;
+}
+
+
+/* footer */
+
+footer{
+    position: relative;
+    /* bottom: 0; */
+    
+    height: 200px;
+    width: 100%;
+    background-color: #222222;
+    color: #515151;
+}
+
+.wrapper{
+    width: 1200px;
+    position: relative;
+    top: 50px;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper h2{
+    font-family: 'bodoni 72';
+    font-size: 25px;
+    color: #9a9a9a;
+}
+.wrapper p{
+    position: relative;
+    top: 20px;
+    font-size: 15px;
+}
+.wrapper .icons{
     position: absolute;
-    top: 15vw;
-    left: 28.75vw;
-    font-size: 2.5vw;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: right;
+}
+.wrapper .icons li{
+    padding: 8px;
+}
+.wrapper .icons li a{}
+.wrapper .icons li a img{
+    width: 20px;
 }
 
-.all-info{
-    position: fixed;
-    bottom: 60px;
+@media (max-width: 768px) {
+    /* 모바일에 최적화된 예외 CSS 코드*/
+    
 }
-
-.info{
-    margin-top: 120px;
-}
-.info h2{
-    font-size: 1.5vw;
-    font-weight: 700;
-}
-.info h3{
-    margin-top: 0.5vw;
-    font-size: 1vw;
-    font-weight: 400;
-}
-
-.button{
-    margin-top: 30px;
-}
-
-.button .ask li{
-    margin-top: 5px;
-}
-
-/* 버튼에 custom cursor 적용 */
-
-#myButton {
-    cursor: url('../img/cursor-click.png'), auto;
-}
-  
-#myButton:hover {
-    cursor: url('../img/cursor-click.png'), auto;
-}
-
-/* @media (max-width: 1500px){
-    .main h1{
-        font-size: 8rem;
-    }
-    .main h1 #season{
-        font-size: 5rem;
-    }
-} */
